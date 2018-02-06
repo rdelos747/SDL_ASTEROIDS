@@ -1,4 +1,5 @@
 #include "bullet.h"
+#include "asteroid.h"
 
 Bullet::Bullet(float newX, float newY, int newDir) {
 	x = newX;
@@ -25,7 +26,8 @@ void Bullet::update() {
 	// check collisions with asteroids (collison layer 1)
 	Object* foundOBJ = COLLISION_AT_POINT(x, y, 1);
 	if (foundOBJ != NULL) {
-		Asteroid* a = (Asteroid *)foundOBJ->gotHit
+		Asteroid* a = (Asteroid *)foundOBJ;
+		a->gotHit();
 		foundOBJ->selfDestroy();
 		selfDestroy();
 	}
