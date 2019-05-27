@@ -3,15 +3,21 @@ SDL = -I/usr/local/include -L/usr/local/lib -lSDL2 -lSDL2_image -lSDL2_ttf
 CXXFLAGS = -Wall -c -std=c++11
 LDFLAGS = $(SDL)
 EXE = asteroids
-OBJS = main.o
+OBJS = asteroid.o asteroidCreator.o
 LIBRARY = ../SDL_LIBRARY/lib.a
 
 all: $(EXE)
 
-$(EXE): main.o
-	$(CXX) main.o $(LIBRARY) $(LDFLAGS) -o $@
+$(EXE): main.o $(OBJS)
+	$(CXX) $(LDFLAGS) main.o $(LIBRARY) $(OBJS) -o $@
 
 main.o: main.cpp
+	$(CXX) $(CXXFLAGS) $< -o $@
+
+asteroid.o: ./classes/asteroid/asteroid.cpp ./classes/asteroid/asteroid.h
+	$(CXX) $(CXXFLAGS) $< -o $@
+
+asteroidCreator.o: ./classes/asteroid/asteroidCreator.cpp ./classes/asteroid/asteroidCreator.h
 	$(CXX) $(CXXFLAGS) $< -o $@
 
 clean:
