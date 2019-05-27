@@ -2,12 +2,21 @@
 #include "../SDL_LIBRARY/FUNCTIONS/ENGINE.h"
 #include "./classes/asteroid/asteroid.h"
 #include "./classes/asteroid/asteroidCreator.h"
+#include "./classes/ship/ship.h"
+
+void addSprites() {
+	ENGINE.addSprite("ship", "./assets/ship.png");
+	ENGINE.addSprite("a1", "./ASSETS/asteroid_large01.png");
+}
 
 AsteroidCreator* ac;
 void setup() {
-	ac = new AsteroidCreator;
+	addSprites();
 
-	ENGINE.addSprite("a1", "./ASSETS/asteroid_large01.png");
+	Ship* ship = new Ship(100, 100);
+	ENGINE.addObject(ship);
+
+	ac = new AsteroidCreator;
 }
 
 void update() {
