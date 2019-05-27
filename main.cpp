@@ -1,8 +1,6 @@
 #include <iostream>
 #include "../SDL_LIBRARY/FUNCTIONS/ENGINE.h"
 
-//Engine* engine = new Engine();
-
 class Test: public Object {
 public:
 	bool moving = true;
@@ -46,33 +44,33 @@ public:
 
 
 void setup() {
-	Sprite* testSprite = engine.addSprite("./ASSETS/asteroid_large01.png");
-	TTF_Font* testFont = engine.addFont("./ShareTechMono-Regular.ttf", 10);
+	Sprite* testSprite = ENGINE.addSprite("./ASSETS/asteroid_large01.png");
+	TTF_Font* testFont = ENGINE.addFont("./ShareTechMono-Regular.ttf", 10);
 
 	Test* test = new Test(0);
 	test->linkSprite(testSprite);
-	engine.addObject(test);
+	ENGINE.addObject(test);
 
 	Test* test2 = new Test(100);
 	test2->linkSprite(testSprite);
-	engine.addObject(test2);
+	ENGINE.addObject(test2);
 
 	
 	TextTest* tt = new TextTest(testFont);
-	engine.addObject(tt);
+	ENGINE.addObject(tt);
 }
 
 int main(int argc, char* args[]) {
-	if (!engine.init()) {
+	if (!ENGINE.init()) {
 		printf("Failed to init\n");
 	} else {
 		setup();
 		bool runGame = true;
 		while(runGame) {
-			runGame = engine.update();
+			runGame = ENGINE.update();
 		}
 	}
 
-	engine.close();
+	ENGINE.close();
 	return 0;
 }
