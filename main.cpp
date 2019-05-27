@@ -18,13 +18,19 @@ public:
 
 	void keyDown(int k) {
 		switch(k) {
-			case SDLK_UP: moving = false; break;
+			case SDLK_UP: 
+				moving = false; 
+				setSprite("al02");
+				break;
 		}
 	}
 
 	void keyUp(int k) {
 		switch(k) {
-			case SDLK_UP: moving = true; break;
+			case SDLK_UP:
+				moving = true;
+				setSprite("al01");
+				break;
 		}
 	}
 };
@@ -44,18 +50,19 @@ public:
 
 
 void setup() {
-	Sprite* testSprite = ENGINE.addSprite("./ASSETS/asteroid_large01.png");
+	ENGINE.addSprite("al01", "./ASSETS/asteroid_large01.png");
+	ENGINE.addSprite("al02", "./ASSETS/asteroid_small01.png");
 	TTF_Font* testFont = ENGINE.addFont("./ShareTechMono-Regular.ttf", 10);
 
 	Test* test = new Test(0);
-	test->linkSprite(testSprite);
+	test->setSprite("al01");
 	ENGINE.addObject(test);
 
 	Test* test2 = new Test(100);
-	test2->linkSprite(testSprite);
+	test2->setSprite("al01");
 	ENGINE.addObject(test2);
 
-	
+
 	TextTest* tt = new TextTest(testFont);
 	ENGINE.addObject(tt);
 }
