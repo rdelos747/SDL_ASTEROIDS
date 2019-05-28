@@ -24,7 +24,9 @@ void setup() {
 void update() {
 	//int moveY = 0;
 	//int moveX = 0;
-	//if ENGINE.keyDown(SDL)
+	if (ENGINE.keyDown(SDLK_UP)) {
+		printf("down\n");
+	}
 	ac->update();
 	ship->update();
 }
