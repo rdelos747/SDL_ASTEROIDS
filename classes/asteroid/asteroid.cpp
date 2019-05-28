@@ -1,7 +1,8 @@
 #include "asteroid.h"
 #include <math.h>
 
-Asteroid::Asteroid(int x, int y, int direction) {
+Asteroid::Asteroid(AsteroidCreator* ac, int x, int y, int direction) {
+	parent = ac;
 	this->x = x;
 	this->y = y;
 	this->direction = direction;
@@ -22,6 +23,7 @@ void Asteroid::update() {
 
 	Object* collidingObject = ENGINE.collisionAtOffset(this, 0, 0, 0);
 	if(collidingObject != NULL) {
+		parent->removeAsteroid(this);
 		selfDestroy();
 	}
 }

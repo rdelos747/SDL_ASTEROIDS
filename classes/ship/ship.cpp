@@ -10,7 +10,13 @@ Ship::Ship(int startX, int startY) {
 
 Ship::~Ship() {}
 
-void Ship::update() {
+void Ship::update(/*bool left, bool right, bool up*/) {
+
+  // if (left) {
+  //   dir -= dirAmount;
+  // }
+
+
   direction += dir;
 
   if (thrust) {
@@ -51,29 +57,29 @@ void Ship::update() {
 	}
 }
 
-void Ship::keyDown(int k) {
-  switch(k) {
-    case SDLK_RIGHT:
-      dir += dirAmount;
-      break;
-    case SDLK_LEFT:
-      dir -= dirAmount;
-      break;
-    case SDLK_UP:
-      thrust = true;
-      break;
-  }
-}
+// void Ship::keyDown(int k) {
+//   switch(k) {
+//     case SDLK_RIGHT:
+//       dir += dirAmount;
+//       break;
+//     case SDLK_LEFT:
+//       dir -= dirAmount;
+//       break;
+//     case SDLK_UP:
+//       thrust = true;
+//       break;
+//   }
+// }
 
-void Ship::keyUp(int k) {
-  switch(k) {
-    case SDLK_RIGHT:
-      dir -= dirAmount;
-      break;
-    case SDLK_LEFT:
-      dir += dirAmount;
-      break;
-    case SDLK_UP:
-      thrust = false;
-  }
-}
+// void Ship::keyUp(int k) {
+//   switch(k) {
+//     case SDLK_RIGHT:
+//       dir -= dirAmount;
+//       break;
+//     case SDLK_LEFT:
+//       dir += dirAmount;
+//       break;
+//     case SDLK_UP:
+//       thrust = false;
+//   }
+// }

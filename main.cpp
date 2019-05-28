@@ -10,17 +10,23 @@ void addSprites() {
 }
 
 AsteroidCreator* ac;
+Ship* ship;
+
 void setup() {
 	addSprites();
 
-	Ship* ship = new Ship(100, 100);
+	ship = new Ship(100, 100);
 	ENGINE.addObject(ship);
 
 	ac = new AsteroidCreator;
 }
 
 void update() {
+	//int moveY = 0;
+	//int moveX = 0;
+	//if ENGINE.keyDown(SDL)
 	ac->update();
+	ship->update();
 }
 
 int main(int argc, char* args[]) {
@@ -31,7 +37,7 @@ int main(int argc, char* args[]) {
 		bool runGame = true;
 		while(runGame) {
 			update();
-			runGame = ENGINE.update();
+			runGame = ENGINE.render();
 		}
 	}
 

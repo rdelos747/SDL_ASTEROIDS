@@ -7,9 +7,9 @@ class Ship: public Object {
 public:
   Ship(int startX, int startY);
   ~Ship();
-  void update();
-  void keyDown(int k);
-  void keyUp(int k);
+  void update(/*bool left, bool right, bool up*/);
+  // void keyDown(int k);
+  // void keyUp(int k);
 
 private:
   int dirAmount = 5;
