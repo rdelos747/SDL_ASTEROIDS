@@ -24,6 +24,7 @@ void Asteroid::update() {
 	Object* collidingObject = ENGINE.collisionAtOffset(this, 0, 0, 0);
 	if(collidingObject != NULL) {
 		parent->removeAsteroid(this);
-		selfDestroy();
+		//selfDestroy();
+		ENGINE.destroyObject(this);
 	}
 }
